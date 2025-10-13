@@ -1,0 +1,26 @@
+section {
+  background-color: #23573f;
+  border-bottom: 0.1em solid #808080;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+  height: 12vh;
+}
+
+.nav-item {
+  color: aliceblue;
+  font-size: 1.3em;
+  margin: 1em 0;
+}
+
+.nav-item:hover {
+  font-size: 1.5em;
+  cursor: pointer;
+}
