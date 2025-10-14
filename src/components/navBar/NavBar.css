@@ -1,6 +1,6 @@
 section {
-  background-color: #23573f;
-  border-bottom: 0.1em solid #808080;
+  background-color: var(--color-surface);
+  border-bottom: 0.3em solid var(--color-border);
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
@@ -15,7 +15,7 @@ nav {
 }
 
 .nav-item {
-  color: aliceblue;
+  color: var(--color-text-primary);
   font-size: 1.3em;
   margin: 1em 0;
   width: 5em;
