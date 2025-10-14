@@ -18,9 +18,14 @@ nav {
   color: aliceblue;
   font-size: 1.3em;
   margin: 1em 0;
+  width: 5em;
+  text-align: center;
+  transition: all 0.5s ease;
 }
 
 .nav-item:hover {
   font-size: 1.5em;
   cursor: pointer;
+  transform: scale(1.2);
+  transition: all 0.5s ease-out;
 }
