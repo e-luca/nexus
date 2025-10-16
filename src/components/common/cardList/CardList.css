@@ -1,0 +1,9 @@
+.card-list-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1em;
+  padding: 2em;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+}
