@@ -1,5 +1,5 @@
 import { NavBarItem } from '../../models/navBarItem';
-import { FaHouse, FaCircleInfo } from 'react-icons/fa6';
+import { FaHouse, FaCircleInfo, FaBox } from 'react-icons/fa6';
 import './NavBar.css';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
@@ -19,6 +19,11 @@ const NavBar = () => {
         name: 'Home',
         path: '/',
         icon: FaHouse,
+      },
+      {
+        name: 'Products',
+        path: '/products',
+        icon: FaBox,
       },
       {
         name: 'About',

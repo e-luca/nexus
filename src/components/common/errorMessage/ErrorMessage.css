@@ -1,0 +1,14 @@
+.message-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  align-items: center;
+  background-color: var(--color-bg-secondary);
+  width: 30vw;
+  border-radius: 15px;
+  padding: 1.5em;
+}
+.error-icon {
+  color: var(--color-error);
+  font-size: 4em;
+}

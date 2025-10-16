@@ -1,0 +1,34 @@
+.message-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  align-items: center;
+  background-color: var(--color-bg-secondary);
+  width: 30vw;
+  border-radius: 15px;
+  padding: 1.5em;
+}
+.icon {
+  color: var(--color-highlight);
+  font-size: 4em;
+  animation: rotateBox 2s ease-in-out 3;
+  position: relative;
+}
+
+@keyframes rotateBox {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-20px) rotate(90deg);
+  }
+  50% {
+    transform: translateY(0) rotate(180deg);
+  }
+  75% {
+    transform: translateY(-20px) rotate(270deg);
+  }
+  100% {
+    transform: translateY(0) rotate(360deg);
+  }
+}

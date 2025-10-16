@@ -4,11 +4,13 @@ import NavBar from './components/navBar/NavBar';
 import Home from './components/home/Home';
 import About from './components/about/About';
 import { AppRoute } from './models/appRoute';
+import Products from './components/products/Products';
 
 function App() {
   const routes: AppRoute[] = [
     { path: '/', element: <Home /> },
     { path: '/about', element: <About /> },
+    { path: '/products', element: <Products /> },
   ];
 
   return (
