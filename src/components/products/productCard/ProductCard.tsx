@@ -2,7 +2,7 @@ import './ProductCard.css';
 import { FaStar, FaTags } from 'react-icons/fa6';
 
 type ProductCardProps = {
-  key: number;
+  id: number;
   title: string;
   imageUrl: string;
   altText: string;
@@ -14,7 +14,7 @@ type ProductCardProps = {
 };
 
 const ProductCard = ({
-  key,
+  id,
   title,
   imageUrl,
   altText,
@@ -28,7 +28,7 @@ const ProductCard = ({
   const TagIcon = FaTags as any;
 
   return (
-    <div className="product-card" onClick={action} key={key}>
+    <div className="product-card" onClick={action}>
       <div className="product-card-header">
         <img src={imageUrl} alt={altText} className="product-card-image" />
         <span className="product-card-title">{title}</span>
