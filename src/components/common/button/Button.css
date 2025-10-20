@@ -1,0 +1,25 @@
+.button {
+  border: 0.2em solid var(--color-highlight);
+  color: var(--color-text-primary);
+  border-radius: 20px;
+  padding: 0.7em;
+  font-size: 0.9em;
+  min-width: 90px;
+}
+
+.primary {
+  background-color: var(--color-btn-primary);
+}
+
+.secondary {
+  background-color: var(--color-btn-secondary);
+}
+
+.button:hover:not(:disabled) {
+  cursor: pointer;
+  background-color: var(--color-btn-primary-hover);
+}
+
+.button:disabled {
+  background-color: var(--color-text-disabled);
+}

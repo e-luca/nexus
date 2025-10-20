@@ -1,0 +1,27 @@
+.search-bar-container {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-bar {
+  background-color: var(--color-highlight);
+  color: black;
+  font-size: 1.3em;
+  padding: 0.3em 0.5em;
+  border: 5px solid var(--color-btn-primary);
+  border-radius: 25px;
+  width: 25vw;
+}
+
+@media only screen and (max-width: 600px) {
+  .search-bar-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .search-bar {
+    min-width: 300px;
+  }
+}
