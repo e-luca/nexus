@@ -4,11 +4,12 @@ import './SearchBar.css';
 
 type SearchBarProps = {
   placeholder: string;
+  initValue: string;
   onSearch: (value: string) => void;
 };
 
-const SearchBar = ({ placeholder, onSearch }: SearchBarProps) => {
-  const [searchValue, setSearchValue] = useState<string>('');
+const SearchBar = ({ placeholder, onSearch, initValue }: SearchBarProps) => {
+  const [searchValue, setSearchValue] = useState<string>(initValue);
 
   function handleChangeInputValue(e: ChangeEvent<HTMLInputElement>) {
     if (!e || !e.target) return;

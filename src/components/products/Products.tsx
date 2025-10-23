@@ -6,25 +6,39 @@ import CardList from '../common/cardList/CardList';
 import LoadingSpinner from '../common/loadingSpinner/LoadingSpinner';
 import ErrorMessage from '../common/errorMessage/ErrorMessage';
 import NoDataMessage from '../common/noDataMessage/NoDataMessage';
-import { FaBox, FaCircleInfo } from 'react-icons/fa6';
+import { FaBox } from 'react-icons/fa6';
 import ProductCard from './productCard/ProductCard';
 import SearchBar from '../common/searchBar/SearchBar';
-import { Tooltip } from 'react-tooltip';
+import InfoTooltip from '../common/infoTooltip/InfoTooltip';
 
 const Products = () => {
   const [skip, setSkip] = useState<number>(0);
   const [cards, setCards] = useState<ReactNode[]>([]);
-  const { data, loading, error } = useFetch<{ products: Product[] }>(
-    `${process.env.REACT_APP_PRODUCTS_API_URL!}?limit=20&skip=${skip}`
+  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [url, setUrl] = useState<string>(
+    `${process.env.REACT_APP_PRODUCTS_API_URL!}?limit=20&skip=0`
   );
-  const InfoIcon = FaCircleInfo as any;
+  const { data, loading, error } = useFetch<{ products: Product[] }>(url);
 
   function handleScrollEnd() {
     setSkip((prevSkip) => prevSkip + 20);
   }
 
   function handleSearch(searchTerm: string) {
-    if (!searchTerm) return;
+    setSearchQuery(searchTerm);
+    if (!searchTerm) {
+      setSkip(0);
+      setCards([]);
+      setUrl(`${process.env.REACT_APP_PRODUCTS_API_URL!}?limit=20&skip=0`);
+      return;
+    }
+
+    setCards([]);
+    setUrl(
+      `${process.env.REACT_APP_PRODUCTS_SEARCH_API_URL!}?q=${encodeURIComponent(
+        searchTerm
+      )}`
+    );
   }
 
   function handleDataChange() {
@@ -56,9 +70,27 @@ const Products = () => {
     handleDataChange();
   }, [data]);
 
-  if (loading && !cards.length) return <LoadingSpinner />;
+  useEffect(() => {
+    if (!url.includes(process.env.REACT_APP_PRODUCTS_SEARCH_API_URL!)) {
+      setUrl(
+        `${process.env.REACT_APP_PRODUCTS_API_URL!}?limit=20&skip=${skip}`
+      );
+    }
+  }, [skip]);
 
-  if (error) return <ErrorMessage />;
+  if (loading && !cards.length)
+    return (
+      <div className="products-container">
+        <LoadingSpinner />
+      </div>
+    );
+
+  if (error)
+    return (
+      <div className="products-container">
+        <ErrorMessage />
+      </div>
+    );
 
   return (
     <div className="products-container">
@@ -69,14 +101,10 @@ const Products = () => {
           <div className="products-header">
             <SearchBar
               placeholder="Search for products..."
+              initValue={searchQuery}
               onSearch={handleSearch}
             />
-            <InfoIcon
-              className="info-icon"
-              data-tooltip-id="search-info-tooltip"
-              data-tooltip-content="Search products only by matching words in title or description."
-            />
-            <Tooltip id="search-info-tooltip" place="top" />
+            <InfoTooltip content="Search products only by matching words in title or description." />
           </div>
 
           <CardList cards={cards} onScrollEnd={handleScrollEnd} />

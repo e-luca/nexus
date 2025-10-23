@@ -1,0 +1,14 @@
+.info-icon {
+  font-size: 1.2em;
+}
+
+.info-icon:hover {
+  color: var(--color-highlight);
+  cursor: pointer;
+}
+
+#search-info-tooltip {
+  background-color: white;
+  color: black;
+  border-radius: 5px;
+}
