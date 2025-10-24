@@ -5,12 +5,14 @@ import Home from './components/home/Home';
 import About from './components/about/About';
 import { AppRoute } from './models/appRoute';
 import Products from './components/products/Products';
+import ProductDetails from './components/products/productDetails/ProductDetails';
 
 function App() {
   const routes: AppRoute[] = [
     { path: '/', element: <Home /> },
     { path: '/about', element: <About /> },
     { path: '/products', element: <Products /> },
+    { path: '/product/:id', element: <ProductDetails /> },
   ];
 
   return (

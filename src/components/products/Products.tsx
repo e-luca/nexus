@@ -10,6 +10,7 @@ import { FaBox } from 'react-icons/fa6';
 import ProductCard from './productCard/ProductCard';
 import SearchBar from '../common/searchBar/SearchBar';
 import InfoTooltip from '../common/infoTooltip/InfoTooltip';
+import { useNavigate } from 'react-router-dom';
 
 const Products = () => {
   const [skip, setSkip] = useState<number>(0);
@@ -19,6 +20,7 @@ const Products = () => {
     `${process.env.REACT_APP_PRODUCTS_API_URL!}?limit=20&skip=0`
   );
   const { data, loading, error } = useFetch<{ products: Product[] }>(url);
+  const navigate = useNavigate();
 
   function handleScrollEnd() {
     setSkip((prevSkip) => prevSkip + 20);
@@ -58,7 +60,9 @@ const Products = () => {
               rating={product.rating}
               price={product.price}
               tags={product.tags}
-              action={() => {}}
+              action={() => {
+                navigate(`/product/${product.id}`);
+              }}
             />
           ));
         return [...prevCards, ...newCards];
