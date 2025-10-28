@@ -6,6 +6,7 @@ import LoadingSpinner from '../../common/loadingSpinner/LoadingSpinner';
 import ErrorMessage from '../../common/errorMessage/ErrorMessage';
 import NoDataMessage from '../../common/noDataMessage/NoDataMessage';
 import { FaBox } from 'react-icons/fa6';
+import ImageSlider from '../../common/imageSlider/ImageSlider';
 
 const ProductDetails = () => {
   const { id: productId } = useParams<{ id: string }>();
@@ -46,8 +47,12 @@ const ProductDetails = () => {
             <span className="product-details-title">{product.title}</span>
           </div>
           <div className="product-details-body">
-            Basic Info
-            <div className="product-details-info-content">
+            <fieldset className="product-details-description">
+              <legend className="border-text">Description</legend>
+              {product.description}
+            </fieldset>
+            <fieldset className="product-details-info-content">
+              <legend className="border-text">Info</legend>
               <div className="product-details-info-tile">
                 <span className="product-details-info-tile-title">
                   Category:
@@ -74,9 +79,9 @@ const ProductDetails = () => {
                   ))}{' '}
                 </span>
               </div>
-            </div>
-            Dimensions
-            <div className="product-details-info-content">
+            </fieldset>
+            <fieldset className="product-details-info-content">
+              <legend className="border-text">Dimensions</legend>
               <div className="product-details-info-tile">
                 <span className="product-details-info-tile-title">Width:</span>{' '}
                 {product.dimensions.width} cm
@@ -93,9 +98,9 @@ const ProductDetails = () => {
                 <span className="product-details-info-tile-title">Weight:</span>{' '}
                 {product.weight} kg
               </div>
-            </div>
-            Policies & Status
-            <div className="product-details-info-content">
+            </fieldset>
+            <fieldset className="product-details-info-content">
+              <legend className="border-text">Policies & Status</legend>
               <div className="product-details-info-tile">
                 <span className="product-details-info-tile-title">
                   Warranty Information:
@@ -120,9 +125,10 @@ const ProductDetails = () => {
                 </span>{' '}
                 {product.returnPolicy}
               </div>
-            </div>
-            Meta Data
-            <div className="product-details-info-content">
+            </fieldset>
+
+            <fieldset className="product-details-info-content">
+              <legend className="border-text"> Meta Data</legend>
               <div className="product-details-info-tile">
                 <span className="product-details-info-tile-title">Code:</span>{' '}
                 {product.meta.barcode}
@@ -134,7 +140,11 @@ const ProductDetails = () => {
                   className="product-details-qrcode"
                 />
               </div>
-            </div>
+            </fieldset>
+            <ImageSlider
+              images={product.images}
+              altText={product.description}
+            />
           </div>
         </div>
       )}
