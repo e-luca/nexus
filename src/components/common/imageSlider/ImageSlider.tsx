@@ -1,40 +1,57 @@
 import { useState } from 'react';
 import './ImageSlider.css';
-import { FaArrowLeft, FaArrowRight } from 'react-icons/fa6';
+import { FaArrowLeft, FaArrowRight, FaImage } from 'react-icons/fa6';
+import NoDataMessage from '../noDataMessage/NoDataMessage';
 
 type ImageSliderProps = {
   images: string[];
   altText: string;
 };
 const ImageSlider = ({ images, altText }: ImageSliderProps) => {
-  const [currentImg, setCurrentImg] = useState<number>(0);
+  const [currentImgIdx, setCurrentImgIdx] = useState<number>(0);
   const [image, setImage] = useState<string>(images[0]);
   const LeftArrow = FaArrowLeft as any;
   const RightArrow = FaArrowRight as any;
+  const ImageIcon = FaImage as any;
 
   function handleImageSwipe(direction: number) {
-    if (currentImg === images.length - 1 && direction > 0) {
-      setCurrentImg(0);
-    } else if (currentImg === 0 && direction < 0) {
-      setCurrentImg(images.length - 1);
+    console.log(`Direction: ${direction}, current idx: ${currentImgIdx}`);
+    if (currentImgIdx === images.length - 1 && direction > 0) {
+      setCurrentImgIdx(0);
+    } else if (currentImgIdx === 0 && direction < 0) {
+      setCurrentImgIdx(images.length - 1);
     } else {
-      setCurrentImg(currentImg + direction);
+      setCurrentImgIdx((prev) => prev + direction);
     }
 
-    setImage(images[currentImg]);
+    setImage(images[currentImgIdx]);
   }
   return (
     <div className="image-slider-container">
-      <img src={image} alt={altText} className="image-slider-content-img" />
-      <button className="arrow left-arrow" onClick={() => handleImageSwipe(1)}>
-        <LeftArrow />
-      </button>
-      <button
-        className="arrow right-arrow"
-        onClick={() => handleImageSwipe(-1)}
-      >
-        <RightArrow />
-      </button>
+      {images.length > 0 ? (
+        <>
+          <img src={image} alt={altText} className="image-slider-content-img" />
+          <button
+            className="arrow left-arrow"
+            onClick={() => handleImageSwipe(-1)}
+            disabled={images.length <= 1}
+          >
+            <LeftArrow />
+          </button>
+          <button
+            className="arrow right-arrow"
+            onClick={() => handleImageSwipe(1)}
+            disabled={images.length <= 1}
+          >
+            <RightArrow />
+          </button>{' '}
+        </>
+      ) : (
+        <NoDataMessage
+          Icon={ImageIcon}
+          message="No available images to display!"
+        />
+      )}
     </div>
   );
 };
