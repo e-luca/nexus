@@ -7,6 +7,7 @@ import ErrorMessage from '../../common/errorMessage/ErrorMessage';
 import NoDataMessage from '../../common/noDataMessage/NoDataMessage';
 import { FaBox } from 'react-icons/fa6';
 import ImageSlider from '../../common/imageSlider/ImageSlider';
+import ProductReviews from '../productReviews/ProductReviews';
 
 const ProductDetails = () => {
   const { id: productId } = useParams<{ id: string }>();
@@ -145,6 +146,7 @@ const ProductDetails = () => {
               images={product.images}
               altText={product.description}
             />
+            <ProductReviews reviews={product.reviews} />
           </div>
         </div>
       )}

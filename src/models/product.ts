@@ -25,7 +25,7 @@ type ProductDimensions = {
   depth: number;
 };
 
-type ProductReview = {
+export type ProductReview = {
   rating: number;
   comment: string;
   date: string;
