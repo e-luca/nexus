@@ -7,23 +7,28 @@ import NoDataMessage from '../../common/noDataMessage/NoDataMessage';
 import { FaClipboardList } from 'react-icons/fa6';
 
 const SuggestedRecipes = () => {
-  const {
-    data: recipes,
-    error,
-    loading,
-  } = useFetch<Recipe[]>(`${process.env.REACT_APP_RECIPES_API_URL!}?limit=3`);
+  const { data, error, loading } = useFetch<{ recipes: Recipe[] }>(
+    `${process.env.REACT_APP_RECIPES_API_URL!}?limit=3`
+  );
 
   const RecipeIcon = FaClipboardList as any;
 
   if (error) return <ErrorMessage />;
   if (loading) return <LoadingSpinner />;
 
-  return recipes ? (
-    <div>
-      {recipes.map((recipe, idx) => (
-        <div key={idx}>
-          <RecipeIcon />
-          <span>{recipe.name}</span>
+  return data && data.recipes && data.recipes.length ? (
+    <div className="suggested-recipes-container">
+      {data.recipes.map((recipe, idx) => (
+        <div key={idx} className="suggested-recipe-card">
+          <div className="suggested-recipe-card-icon-name">
+            <RecipeIcon className="recipe-icon" />
+            <span className="recipe-title">{recipe.name}</span>
+          </div>
+          <div className="suggested-recipe-card-info">
+            <span>Prep: {recipe.prepTimeMinutes} min</span>
+            <span>Difficulty: {recipe.difficulty}</span>
+            <span>Type: {recipe.mealType}</span>
+          </div>
         </div>
       ))}
     </div>

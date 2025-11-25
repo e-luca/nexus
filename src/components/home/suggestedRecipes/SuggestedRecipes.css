@@ -1,0 +1,35 @@
+.suggested-recipes-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.suggested-recipe-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  border-radius: 25px;
+  border: 3px solid var(--color-border);
+  padding: 0.8em;
+}
+.suggested-recipe-card-icon-name {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+}
+
+.recipe-icon {
+  height: 3em;
+  width: 3em;
+}
+
+.recipe-title {
+  font-size: 1.5em;
+  font-weight: 500;
+}
+
+.suggested-recipe-card-info {
+  display: flex;
+  gap: 1em;
+  margin: 0 5px;
+}

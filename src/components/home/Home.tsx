@@ -5,10 +5,12 @@ import SuggestedRecipes from './suggestedRecipes/SuggestedRecipes';
 
 const Home = () => {
   return (
-    <div>
+    <div className="home-container">
       <Quote />
       <RandomToDo />
-      <SuggestedRecipes />
+      <div className="recipes-column">
+        <SuggestedRecipes />
+      </div>
     </div>
   );
 };
