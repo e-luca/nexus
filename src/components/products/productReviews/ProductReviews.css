@@ -1,7 +1,6 @@
 .product-review-container {
-  background-color: var(--color-surface);
   border-radius: 20px;
-  border: transparent;
+  border: 3px solid var(--color-border);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

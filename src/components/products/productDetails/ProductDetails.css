@@ -29,8 +29,8 @@
 }
 
 .product-details-body {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 2em;
   width: 100%;
   margin-top: 2em;
@@ -40,6 +40,7 @@
   border: 3px solid var(--color-border);
   border-radius: 20px;
   padding: 1em;
+  grid-column: 1/-1;
 }
 
 .product-details-info-content {
@@ -61,6 +62,7 @@
   width: auto;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .product-details-info-tile-title {
@@ -71,10 +73,16 @@
 .product-details-qrcode {
   width: 150px;
   height: 150px;
+  margin: auto;
 }
 
 .border-text {
   text-align: center;
   font-size: 1.5em;
   font-weight: 500;
+}
+
+.image-slider-column,
+.reviews-column {
+  grid-column: 1/-1;
 }

@@ -142,11 +142,16 @@ const ProductDetails = () => {
                 />
               </div>
             </fieldset>
-            <ImageSlider
-              images={product.images}
-              altText={product.description}
-            />
-            <ProductReviews reviews={product.reviews} />
+            <div className="image-slider-column">
+              {' '}
+              <ImageSlider
+                images={product.images}
+                altText={product.description}
+              />{' '}
+            </div>
+            <div className="reviews-column">
+              <ProductReviews reviews={product.reviews} />{' '}
+            </div>
           </div>
         </div>
       )}

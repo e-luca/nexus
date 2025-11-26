@@ -4,14 +4,14 @@ import ErrorMessage from '../../common/errorMessage/ErrorMessage';
 import LoadingSpinner from '../../common/loadingSpinner/LoadingSpinner';
 import './SuggestedRecipes.css';
 import NoDataMessage from '../../common/noDataMessage/NoDataMessage';
-import { FaClipboardList } from 'react-icons/fa6';
+import { FaBowlRice } from 'react-icons/fa6';
 
 const SuggestedRecipes = () => {
   const { data, error, loading } = useFetch<{ recipes: Recipe[] }>(
     `${process.env.REACT_APP_RECIPES_API_URL!}?limit=3`
   );
 
-  const RecipeIcon = FaClipboardList as any;
+  const RecipeIcon = FaBowlRice as any;
 
   if (error) return <ErrorMessage />;
   if (loading) return <LoadingSpinner />;

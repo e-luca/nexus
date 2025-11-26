@@ -1,11 +1,41 @@
 .home-container {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 2fr 1fr;
   grid-template-rows: auto auto;
   gap: 1em;
   margin: 1.5em;
+  align-items: center;
+}
+
+.welcome-message {
+  font-size: 2em;
+  font-style: italic;
+  grid-column: 1 / -1;
+  grid-row: 1;
+  margin-bottom: 0.7em;
+  justify-self: center;
+  animation: slide 3s ease-in-out infinite alternate;
 }
 
 .recipes-column {
-  grid-row: 1 / 3;
+  grid-column: 2;
+  grid-row: 2 / 4;
+}
+
+.quote-column {
+  grid-column: 1;
+  grid-row: 2;
+}
+.todo-column {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+@keyframes slide {
+  from {
+    transform: translateX(-75px);
+  }
+  to {
+    transform: translateX(75px);
+  }
 }

@@ -6,8 +6,14 @@ import SuggestedRecipes from './suggestedRecipes/SuggestedRecipes';
 const Home = () => {
   return (
     <div className="home-container">
-      <Quote />
-      <RandomToDo />
+      <div className="welcome-message">Welcome to Nexus</div>
+      <div className="quote-column">
+        <RandomToDo />
+      </div>
+      <div className="todo-column">
+        <Quote />
+      </div>
+
       <div className="recipes-column">
         <SuggestedRecipes />
       </div>
