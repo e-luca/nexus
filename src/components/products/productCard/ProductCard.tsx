@@ -1,49 +1,38 @@
+import { Product } from '../../../models/product';
 import './ProductCard.css';
+import '../../common/styles/Cards.css';
 import { FaStar, FaTags } from 'react-icons/fa6';
 
 type ProductCardProps = {
-  id: number;
-  title: string;
-  imageUrl: string;
-  altText: string;
-  category: string;
-  price: number;
-  rating: number;
-  tags: string[];
+  product: Product;
   action: () => void;
 };
 
-const ProductCard = ({
-  id,
-  title,
-  imageUrl,
-  altText,
-  category,
-  price,
-  rating,
-  tags,
-  action,
-}: ProductCardProps) => {
+const ProductCard = ({ product, action }: ProductCardProps) => {
   const RatingIcon = FaStar as any;
   const TagIcon = FaTags as any;
 
   return (
-    <div className="product-card" onClick={action}>
-      <div className="product-card-header">
-        <img src={imageUrl} alt={altText} className="product-card-image" />
-        <span className="product-card-title">{title}</span>
+    <div className="card" onClick={action}>
+      <div className="card-header">
+        <img
+          src={product.thumbnail}
+          alt={product.description}
+          className="card-image"
+        />
+        <span className="card-title">{product.title}</span>
       </div>
-      <div className="product-card-body">
-        <div className="price-rating-wrapper">
+      <div className="card-body">
+        <div className="rating-wrapper">
           <span>
-            <RatingIcon className="rating-icon" /> {rating}
+            <RatingIcon className="rating-icon" /> {product.rating}
           </span>
-          <span>${price}</span>
+          <span>${product.price}</span>
         </div>
-        <div className="product-category">Category: {category}</div>
-        <div className="product-tags">
+        <div className="product-category">Category: {product.category}</div>
+        <div className="card-tags">
           <TagIcon />
-          {tags.map((tag, idx) => (
+          {product.tags.map((tag, idx) => (
             <span key={idx}>#{tag}</span>
           ))}
         </div>

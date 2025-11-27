@@ -19,7 +19,7 @@ const Products = () => {
   const [url, setUrl] = useState<string>(
     `${process.env.REACT_APP_PRODUCTS_API_URL!}?limit=20&skip=0`
   );
-  const { data, loading, error } = useFetch<{ products: Product[] }>(url);
+  const { data, error, loading } = useFetch<{ products: Product[] }>(url);
   const navigate = useNavigate();
 
   function handleScrollEnd() {
@@ -52,14 +52,7 @@ const Products = () => {
           .map((product) => (
             <ProductCard
               key={product.id}
-              id={product.id}
-              title={product.title}
-              category={product.category}
-              imageUrl={product.thumbnail}
-              altText={product.description}
-              rating={product.rating}
-              price={product.price}
-              tags={product.tags}
+              product={product}
               action={() => {
                 navigate(`/product/${product.id}`);
               }}
