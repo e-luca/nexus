@@ -1,5 +1,5 @@
 import { ReactNode, useEffect, useState } from 'react';
-import './Products.css';
+import '../common/styles/pageLayout.css';
 import { Product } from '../../models/product';
 import { useFetch } from '../../utils/hooks/useFetch';
 import CardList from '../common/cardList/CardList';
@@ -7,10 +7,10 @@ import LoadingSpinner from '../common/loadingSpinner/LoadingSpinner';
 import ErrorMessage from '../common/errorMessage/ErrorMessage';
 import NoDataMessage from '../common/noDataMessage/NoDataMessage';
 import { FaBox } from 'react-icons/fa6';
-import ProductCard from './productCard/ProductCard';
 import SearchBar from '../common/searchBar/SearchBar';
 import InfoTooltip from '../common/infoTooltip/InfoTooltip';
 import { useNavigate } from 'react-router-dom';
+import Card from '../common/card/Card';
 
 const Products = () => {
   const [skip, setSkip] = useState<number>(0);
@@ -50,9 +50,15 @@ const Products = () => {
         const newCards = data.products
           .filter((p) => !existingIds.has(p.id.toString()))
           .map((product) => (
-            <ProductCard
+            <Card
               key={product.id}
-              product={product}
+              title={product.title}
+              image={product.thumbnail}
+              rating={product.rating}
+              tags={product.tags}
+              category={product.category}
+              description={product.description}
+              price={product.price}
               action={() => {
                 navigate(`/product/${product.id}`);
               }}
@@ -77,25 +83,25 @@ const Products = () => {
 
   if (loading && !cards.length)
     return (
-      <div className="products-container">
+      <div className="page-container">
         <LoadingSpinner />
       </div>
     );
 
   if (error)
     return (
-      <div className="products-container">
+      <div className="page-container">
         <ErrorMessage />
       </div>
     );
 
   return (
-    <div className="products-container">
+    <div className="page-container">
       {!cards.length ? (
         <NoDataMessage Icon={FaBox} message="No products found!" />
       ) : (
         <>
-          <div className="products-header">
+          <div className="page-header">
             <SearchBar
               placeholder="Search for products..."
               initValue={searchQuery}

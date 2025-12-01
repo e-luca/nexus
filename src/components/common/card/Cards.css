@@ -73,7 +73,17 @@
 
 .card-tags {
   display: flex;
-  width: 100%;
+  align-items: center;
+  gap: 0.5em;
+  flex-wrap: wrap;
+}
+
+.product-category {
+  text-transform: capitalize;
+}
+
+.prep-time {
+  display: flex;
   gap: 0.5em;
   align-items: center;
 }
