@@ -37,7 +37,7 @@ const Recipes = () => {
               prepTimeMinutes={recipe.prepTimeMinutes}
               difficulty={recipe.difficulty}
               action={() => {
-                navigate(`/recipe/:${recipe.id}`);
+                navigate(`/recipe/${recipe.id}`);
               }}
             />
           ));
