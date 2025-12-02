@@ -19,7 +19,7 @@ const Recipes = () => {
     `${process.env.REACT_APP_RECIPES_API_URL!}?limit=20&skip=0`
   );
   const { data, error, loading } = useFetch<{ recipes: Recipe[] }>(url);
-  const navigate = useNavigate;
+  const navigate = useNavigate();
 
   function handleDataChange() {
     if (data && data.recipes) {
@@ -36,7 +36,9 @@ const Recipes = () => {
               tags={recipe.tags}
               prepTimeMinutes={recipe.prepTimeMinutes}
               difficulty={recipe.difficulty}
-              action={() => {}}
+              action={() => {
+                navigate(`/recipe/:${recipe.id}`);
+              }}
             />
           ));
 

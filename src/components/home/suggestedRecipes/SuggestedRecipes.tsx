@@ -5,6 +5,7 @@ import LoadingSpinner from '../../common/loadingSpinner/LoadingSpinner';
 import './SuggestedRecipes.css';
 import NoDataMessage from '../../common/noDataMessage/NoDataMessage';
 import { FaBowlRice } from 'react-icons/fa6';
+import { useNavigate } from 'react-router-dom';
 
 const SuggestedRecipes = () => {
   const { data, error, loading } = useFetch<{ recipes: Recipe[] }>(
@@ -12,6 +13,11 @@ const SuggestedRecipes = () => {
   );
 
   const RecipeIcon = FaBowlRice as any;
+  const navigate = useNavigate();
+
+  function handleClick(id: number) {
+    navigate(`/recipe/${id}`);
+  }
 
   if (error) return <ErrorMessage />;
   if (loading) return <LoadingSpinner />;
@@ -19,7 +25,11 @@ const SuggestedRecipes = () => {
   return data && data.recipes && data.recipes.length ? (
     <div className="suggested-recipes-container">
       {data.recipes.map((recipe, idx) => (
-        <div key={idx} className="suggested-recipe-card">
+        <div
+          key={idx}
+          className="suggested-recipe-card"
+          onClick={() => handleClick(recipe.id)}
+        >
           <div className="suggested-recipe-card-icon-name">
             <RecipeIcon className="recipe-icon" />
             <span className="recipe-title">{recipe.name}</span>

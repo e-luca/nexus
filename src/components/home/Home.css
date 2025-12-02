@@ -8,27 +8,34 @@
 }
 
 .welcome-message {
-  font-size: 2em;
+  font-size: 3em;
   font-style: italic;
   grid-column: 1 / -1;
   grid-row: 1;
-  margin-bottom: 0.7em;
   justify-self: center;
   animation: slide 3s ease-in-out infinite alternate;
 }
 
+.home-description {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  font-size: 1.3em;
+  margin-bottom: 2em;
+  text-align: center;
+}
+
 .recipes-column {
   grid-column: 2;
-  grid-row: 2 / 4;
+  grid-row: 3 / 5;
 }
 
 .quote-column {
   grid-column: 1;
-  grid-row: 2;
+  grid-row: 3;
 }
 .todo-column {
   grid-column: 1;
-  grid-row: 3;
+  grid-row: 4;
 }
 
 @keyframes slide {
