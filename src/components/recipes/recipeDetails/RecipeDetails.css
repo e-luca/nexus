@@ -1,0 +1,11 @@
+.instructions-ingredients {
+  border: 3px solid var(--color-border);
+  border-radius: 20px;
+  padding: 1em;
+}
+
+.recipe-details-image {
+  object-fit: cover;
+  border-radius: 25px;
+  padding: 0;
+}

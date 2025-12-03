@@ -6,11 +6,11 @@
 }
 
 .search-bar {
-  background-color: var(--color-highlight);
-  color: black;
+  background-color: var(--color-accent-bg);
+  color: white;
   font-size: 1.3em;
   padding: 0.3em 0.5em;
-  border: 5px solid var(--color-btn-primary);
+  border: 3px solid var(--color-btn-primary);
   border-radius: 25px;
   width: 25vw;
 }
