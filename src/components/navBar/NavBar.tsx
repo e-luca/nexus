@@ -1,5 +1,11 @@
 import { NavBarItem } from '../../models/navBarItem';
-import { FaHouse, FaCircleInfo, FaBox, FaBowlFood } from 'react-icons/fa6';
+import {
+  FaHouse,
+  FaCircleInfo,
+  FaBox,
+  FaBowlFood,
+  FaHashtag,
+} from 'react-icons/fa6';
 import './NavBar.css';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
@@ -29,6 +35,11 @@ const NavBar = () => {
         name: 'Recipes',
         path: '/recipes',
         icon: FaBowlFood,
+      },
+      {
+        name: 'Posts',
+        path: '/posts',
+        icon: FaHashtag,
       },
       {
         name: 'About',
