@@ -1,0 +1,6 @@
+.email-col,
+.birth-col {
+  grid-column: 1 / -1;
+  justify-content: center;
+  gap: 1em;
+}

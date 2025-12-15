@@ -9,6 +9,7 @@ import ProductDetails from './components/products/productDetails/ProductDetails'
 import Recipes from './components/recipes/Recipes';
 import RecipeDetails from './components/recipes/recipeDetails/RecipeDetails';
 import Posts from './components/posts/Posts';
+import UserDetails from './components/user/UserDetails';
 
 function App() {
   const routes: AppRoute[] = [
@@ -19,6 +20,10 @@ function App() {
     { path: '/recipes', element: <Recipes /> },
     { path: '/recipe/:id', element: <RecipeDetails /> },
     { path: '/posts', element: <Posts /> },
+    {
+      path: '/users/:id',
+      element: <UserDetails />,
+    },
   ];
 
   return (

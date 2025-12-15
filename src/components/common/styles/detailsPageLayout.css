@@ -63,6 +63,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .details-page-info-tile-title {
